@@ -39,7 +39,7 @@ fn main() {
 
     let numbers: Result<Vec<i32>, _> = args[input_arg_index]
         .split(',')
-        .map(|s| i32::from_str(s))
+        .map(i32::from_str)
         .collect();
 
     match numbers {
@@ -75,7 +75,7 @@ fn print_help(topic: Option<&String>) {
             println!("Remove duplicate values from the sorted list of comma-separated integers.");
         }
         _ => {
-            print_usage(&env::args().nth(0).unwrap_or_else(|| String::from("quicksort")));
+            print_usage(&env::args().next().unwrap_or_else(|| String::from("cedru")));
         }
     }
 }
@@ -113,5 +113,5 @@ fn partition<T: Ord + Copy>(nums: &mut [T]) -> usize {
         }
     }
     nums.swap(pivot_index, right);
-    return pivot_index;
+    pivot_index
 }
