@@ -81,8 +81,10 @@ fn print_help(topic: Option<&String>) {
 }
 
 fn print_usage(program_name: &str) {
-    println!("Usage: {} [-r | --reverse] [-u | --unique] <comma-separated numbers>",
-             program_name);
+    println!(
+        "Usage: {} [-r | --reverse] [-u | --unique] <comma-separated numbers>",
+        program_name
+    );
     println!("Sort a list of comma-separated integers using the quick sort algorithm.");
     println!("Options:");
     println!("-r, --reverse    Sort in descending order.");
