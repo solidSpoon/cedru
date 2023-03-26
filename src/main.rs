@@ -1,5 +1,6 @@
 use std::env;
 use std::str::FromStr;
+
 fn main() {
     let args: Vec<String> = env::args().collect();
 
@@ -61,7 +62,6 @@ fn main() {
             std::process::exit(1);
         }
     }
-
 }
 
 fn print_help(topic: Option<&String>) {
@@ -81,7 +81,8 @@ fn print_help(topic: Option<&String>) {
 }
 
 fn print_usage(program_name: &str) {
-    println!("Usage: {} [-r | --reverse] [-u | --unique] <comma-separated numbers>", program_name);
+    println!("Usage: {} [-r | --reverse] [-u | --unique] <comma-separated numbers>",
+             program_name);
     println!("Sort a list of comma-separated integers using the quick sort algorithm.");
     println!("Options:");
     println!("-r, --reverse    Sort in descending order.");
