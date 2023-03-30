@@ -87,7 +87,7 @@ jobs:
         with:
           tag_name: ${{ env.RELEASE_NAME }}
           release_name: Release ${{ env.RELEASE_NAME }}
-          draft: false
+          draft: true
           prerelease: false
 
       - name: Upload release artifact
