@@ -56,7 +56,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
+        
+      - name: Install jq
+        run: sudo apt-get install -y jq
+      
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
         with:
@@ -71,7 +74,10 @@ jobs:
           args: --workspace --release
 
       - name: Setup release name
-        run: echo "RELEASE_NAME=my-app-$(echo ${GITHUB_SHA} | cut -c1-7)" >> $GITHUB_ENV
+        run: |
+          VERSION=$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[0].version')
+          echo "RELEASE_NAME=v$VERSION" >> $GITHUB_ENV
+
 
       - name: Create Release
         id: create_release
