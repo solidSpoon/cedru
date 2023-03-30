@@ -94,7 +94,7 @@ jobs:
           asset_name: cedru
           asset_content_type: application/octet-stream
   sha256:
-    if: github.event_name == 'release'
+    if: github.event_name == 'published'
     name: sha256
     runs-on: ubuntu-latest
     steps:
